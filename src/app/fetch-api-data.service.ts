@@ -5,7 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 // Declaring the API URL for the backend server
-const apiUrl = 'YOUR_HOSTED_API_URL_HERE/';
+const apiUrl = 'https://movieverse-902fc605dee3.herokuapp.com/';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class FetchApiDataService {
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);  // Logging user details for debugging
     return this.http.post(apiUrl + 'users', userDetails).pipe(
-      catchError(this.handleError) // Error handling
+      catchError(this.handleError) 
     );
   }
 
@@ -34,11 +34,11 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http.get<any>(apiUrl + 'movies', {  
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,  // Add token to Authorization header
+        Authorization: 'Bearer ' + token,  
       })
     }).pipe(
-      map(this.extractResponseData), // Process the response data
-      catchError(this.handleError) // Handle errors
+      map(this.extractResponseData), 
+      catchError(this.handleError) 
     );
   }
 
@@ -47,11 +47,11 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http.get<any>(`${apiUrl}movies/${id}`, {  
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,  // Add token to Authorization header
+        Authorization: 'Bearer ' + token,  
       })
     }).pipe(
-      map(this.extractResponseData), // Process the response data
-      catchError(this.handleError) // Handle errors
+      map(this.extractResponseData), 
+      catchError(this.handleError) 
     );
   }
 
@@ -60,7 +60,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http.get<any>(`${apiUrl}directors/${id}`, {  
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,  // Add token to Authorization header
+        Authorization: 'Bearer ' + token,  
       })
     }).pipe(
       map(this.extractResponseData),
@@ -73,7 +73,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http.get<any>(`${apiUrl}genres/${id}`, {  
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,  // Add token to Authorization header
+        Authorization: 'Bearer ' + token, 
       })
     }).pipe(
       map(this.extractResponseData),
@@ -86,7 +86,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http.get<any>(`${apiUrl}users/${id}`, {  
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,  // Add token to Authorization header
+        Authorization: 'Bearer ' + token,  
       })
     }).pipe(
       map(this.extractResponseData),
@@ -99,7 +99,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http.get<any>(`${apiUrl}users/${userId}/favorites`, {  
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,  // Add token to Authorization header
+        Authorization: 'Bearer ' + token,  
       })
     }).pipe(
       map(this.extractResponseData),
@@ -112,7 +112,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http.post<any>(`${apiUrl}users/${userId}/favorites`, { movieId }, {  
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,  // Add token to Authorization header
+        Authorization: 'Bearer ' + token,  
       })
     }).pipe(
       map(this.extractResponseData),
@@ -125,7 +125,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http.put<any>(`${apiUrl}users/${id}`, userDetails, {  
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,  // Add token to Authorization header
+        Authorization: 'Bearer ' + token,  
       })
     }).pipe(
       map(this.extractResponseData),
@@ -138,7 +138,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http.delete<any>(`${apiUrl}users/${id}`, {  
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,  // Add token to Authorization header
+        Authorization: 'Bearer ' + token,  
       })
     }).pipe(
       catchError(this.handleError)
@@ -150,7 +150,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem('token');
     return this.http.delete<any>(`${apiUrl}users/${userId}/favorites/${movieId}`, {  
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,  // Add token to Authorization header
+        Authorization: 'Bearer ' + token, 
       })
     }).pipe(
       catchError(this.handleError)
@@ -162,17 +162,18 @@ export class FetchApiDataService {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
     } else {
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    return throwError('Something went wrong; please try again later.');
+    console.error(
+        `Error Status code ${error.status}, ` +
+        `Error body is: ${error.error}`);
+  }
+  //Newer method for throwError
+  return throwError(() => new Error('Something went wrong; please try again later.'));
   }
 
-  // Private method to extract response data, simplifying the process
-  private extractResponseData(res: any): any {
+  // Private method to extract response data, simplifying the process/Non-typed response extraction
+  private extractResponseData(res: Response): any {
     const body = res;
-    return body || {}; // Return empty object if no body is found
+    return body || {}; 
   }
 }
 
