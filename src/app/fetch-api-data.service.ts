@@ -105,6 +105,16 @@ export class FetchApiDataService {
     );
   }
 
+  // Method to update user data
+  public updateUser(userData: any): Observable<any> {
+    return this.http.put(apiUrl + `/user/${userData.id}`, userData,
+      {headers: new HttpHeaders({
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+      })}).pipe(
+          map(this.extractResponseData), catchError(this.handleError)
+      );
+  }
+
   // Method to add a movie to favourite movies for a user
   public addToFavourites(userId: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
@@ -151,7 +161,7 @@ export class FetchApiDataService {
   }
 
   // Private method to extract response data, simplifying the process
-  private extractResponseData(res: Response): any {
+  private extractResponseData(res: any): any {
     const body = res;
     return body || {};
   }
