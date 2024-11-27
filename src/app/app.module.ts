@@ -19,6 +19,10 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -34,7 +38,7 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     UserProfileComponent,
-    
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,18 +48,19 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatInputModule,
     MatButtonModule,
+    MatSidenavModule,
     MatCardModule,
     MatFormFieldModule,
     MatSnackBarModule,
     RouterModule.forRoot(appRoutes),
     MatIconModule,
-
-    
+    MatToolbarModule,
+    MatMenuModule,
   ],
   providers: [
     provideHttpClient(),
-    provideAnimationsAsync()  
-    ],
+    provideAnimationsAsync(),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,29 @@
+/* Container for movie cards */
+.movie-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scroll */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+    flex-wrap: nowrap; /* Prevent cards from wrapping to the next line */
+    margin-top: 50px; /* Add space to push the cards down */
+  }
+  
+  /* Individual movie card */
+  .movie-card {
+    min-width: 250px; /* Minimum width for each card */
+    max-width: 250px; /* Maximum width for each card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  }
+  
+  /* Image style */
+  .movie-image {
+    width: 100%; /* Make the image take full width of the card */
+    height: 300px; /* Increased height to better fit the movie posters */
+    object-fit: cover; /* Ensure the image fits nicely without distortion */
+    border-radius: 4px 4px 0 0; /* Optional: rounded corners for the top of the image */
+  }
+  
