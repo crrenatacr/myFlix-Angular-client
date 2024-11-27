@@ -22,7 +22,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateUser(): void {
-    this.fetchApiData.updateUser(this.userData, this.userData.id).subscribe({
+    this.fetchApiData.updateUser(this.userData).subscribe({
       next: (res: any) => {
         this.userData = {
           ...res,
