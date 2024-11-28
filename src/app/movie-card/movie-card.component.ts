@@ -45,7 +45,7 @@ export class MovieCardComponent implements OnInit {
       }
     }, error => {
       console.error('Error fetching movies:', error);
-      // Handle errors here if needed (e.g., show an error message)
+      // Handle errors here if needed (e.g., show an error message), yet to do
     });
   }
 
@@ -62,10 +62,10 @@ export class MovieCardComponent implements OnInit {
   // Function to open the Genre Dialog
   openGenreDialog(genre: any): void {
     this.dialog.open(GenreDialogComponent, {
-      width: '400px', // Dialog width
+      width: '400px', 
       data: {
-        name: genre.Name, // Pass the genre name to the dialog
-        description: genre.Description // Pass the genre description to the dialog
+        name: genre.Name, 
+        description: genre.Description 
       }
     });
   }
@@ -73,11 +73,11 @@ export class MovieCardComponent implements OnInit {
   // Function to open the Director Dialog
   openDirectorDialog(director: any): void {
     this.dialog.open(DirectorDialogComponent, {
-      width: '400px', // Dialog width
+      width: '400px', 
       data: {
-        name: director.Name, // Pass the director's name to the dialog
-        bio: director.Bio, // Pass the director's bio to the dialog
-        birth: director.Birth, // Pass the director's birth year to the dialog
+        name: director.Name, 
+        bio: director.Bio, 
+        birth: director.Birth, 
         death: director.Death || 'N/A' // Pass the director's death year or 'N/A' if empty
       }
     });
@@ -86,7 +86,7 @@ export class MovieCardComponent implements OnInit {
   // Function to open the Synopsis Dialog
   openSynopsisDialog(movie: any): void {
     this.dialog.open(SynopsisDialogComponent, {
-      width: '400px', // Dialog width
+      width: '400px', 
       data: {
         title: movie.Title, // Pass the movie title to the dialog
         description: movie.Description, // Pass the movie description to the dialog
