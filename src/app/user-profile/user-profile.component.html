@@ -1,36 +1,44 @@
 <!DOCTYPE html>
-<div class="user-profile">
-    <mat-card>
-      <mat-card-title>User Information</mat-card-title>
-      <form (ngSubmit)="updateProfile()">
-        <mat-form-field class="full-width">
-          <mat-label>Username</mat-label>
-          <input matInput [(ngModel)]="user.Username" name="username" required />
-        </mat-form-field>
+<app-navbar></app-navbar>
+<mat-card>
+    <mat-card-title>User Information</mat-card-title>
+    <form (ngSubmit)="updateProfile()">
+      <!-- Username Input Field -->
+      <mat-form-field class="full-width">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="user.Username" name="username" required />
+      </mat-form-field>
   
-        <mat-form-field class="full-width">
-          <mat-label>Email</mat-label>
-          <input matInput [(ngModel)]="user.Email" name="email" required />
-        </mat-form-field>
+      <!-- Email Input Field -->
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="user.Email" name="email" required />
+      </mat-form-field>
   
-        <mat-form-field class="full-width">
-          <mat-label>Birthday</mat-label>
-          <input matInput type="date" [(ngModel)]="user.Birthday" name="birthday" required />
-        </mat-form-field>
+      <!-- Birthday Input Field -->
+      <mat-form-field class="full-width">
+        <mat-label>Birthday</mat-label>
+        <input matInput type="date" [(ngModel)]="user.Birthday" name="birthday" required />
+      </mat-form-field>
   
-        <button mat-raised-button color="primary" type="submit">Update Profile</button>
-        <button mat-raised-button color="warn" type="button" (click)="deregister()">Delete Profile</button>
-      </form>
-    </mat-card>
+      <!-- Update Profile Button -->
+      <button mat-raised-button color="primary" type="submit">Update Profile</button>
   
-    <mat-card>
-      <mat-card-title>Favorite Movies</mat-card-title>
-      <ul>
-        <li *ngFor="let movie of favoriteMovies">
-          {{ movie.Title }}
-          <button mat-button (click)="removeFavorite(movie._id)">Remove</button>
-        </li>
-      </ul>
-    </mat-card>
-  </div>
+      <!-- Delete Profile Button -->
+      <button mat-raised-button color="warn" type="button" (click)="deregister()">Delete Profile</button>
+    </form>
+  </mat-card>
+  
+  <mat-card>
+    <mat-card-title>Favorite Movies</mat-card-title>
+    <mat-divider></mat-divider> <!-- Divider to separate the sections -->
+    <ul>
+      <!-- Loop through the favorite movies -->
+      <li *ngFor="let movie of favoriteMovies">
+        {{ movie.Title }}
+        <!-- Remove Favorite Button -->
+        <button mat-button color="warn" (click)="removeFavorite(movie._id)">Remove</button>
+      </li>
+    </ul>
+  </mat-card>
   
