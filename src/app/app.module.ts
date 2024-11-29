@@ -26,10 +26,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
 import { DirectorDialogComponent } from './director-dialog/director-dialog.component';
 import { SynopsisDialogComponent } from './synopsis-dialog/synopsis-dialog.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: UserProfileComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -56,6 +58,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatSidenavModule,
     MatCardModule,
+    MatDividerModule,
     MatFormFieldModule,
     MatSnackBarModule,
     RouterModule.forRoot(appRoutes),

@@ -7,15 +7,8 @@
   
     <div class="spacer"></div>
   
-    <button mat-button>Home</button>
-    <button mat-button>Profile</button>
-    <button mat-button>Logout</button>
+    <button mat-button routerLink="/welcome">Home</button>
+    <button mat-button routerLink="/profile">Profile</button>
+    <button mat-button (click)="logout()">Logout</button>
   </mat-toolbar>
   
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #drawer mode="side" [opened]="isMenuOpen">
-      <button mat-button>Home</button>
-      <button mat-button>Movies</button>
-      <button mat-button >Profile</button>
-    </mat-sidenav>
-  </mat-sidenav-container>
