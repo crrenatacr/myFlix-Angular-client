@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { FetchApiDataService } from './fetch-api-data.service';
 
 describe('FetchApiDataService', () => {
@@ -11,6 +10,6 @@ describe('FetchApiDataService', () => {
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(service).to.exist; // Chai Library
   });
 });

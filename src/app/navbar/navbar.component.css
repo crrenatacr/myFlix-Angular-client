@@ -1,0 +1,35 @@
+/* Navbar Style */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+  
+  .menu-button {
+    display: none;
+  }
+  
+  .logo {
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .spacer {
+    flex: 1;
+  }
+  
+  button {
+    color: white;
+  }
+  
+  /* Para telas pequenas, o menu de navegação se torna um botão */
+  @media (max-width: 600px) {
+    .menu-button {
+      display: block;
+    }
+    .spacer {
+      display: none;
+    }
+  }
+  

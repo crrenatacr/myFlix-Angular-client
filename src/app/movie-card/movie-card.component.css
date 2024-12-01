@@ -27,3 +27,10 @@
     border-radius: 4px 4px 0 0; /* Optional: rounded corners for the top of the image */
   }
   
+  mat-icon {
+    color: grey;
+  }
+  
+  mat-icon.favorite {
+    color: red; /* Changes color when added to favorites */
+  } 

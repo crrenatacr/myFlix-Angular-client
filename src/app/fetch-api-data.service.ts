@@ -92,18 +92,6 @@ export class FetchApiDataService {
     );
   }
 
-  // Method to get favourite movies for a user
-  public getFavouriteMovies(userId: string): Observable<any> {
-    const token = localStorage.getItem('token');
-    return this.http.get<any>(`${apiUrl}users/${userId}/favorites`, {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`,
-      }),
-    }).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
-  }
 
   // Method to update user data
   public updateUser(userData: any): Observable<any> {
@@ -118,6 +106,18 @@ export class FetchApiDataService {
   // Method to add a movie to favourite movies for a user
   public addToFavourites(userId: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
+    // Checking if the token exists
+    if (!token) {
+      console.error('Token is missing');
+      return throwError(() => new Error('Token is missing'));
+    }
+    
+    // Verify if userId is correct
+    if (!userId || !movieId) {
+      console.error('User ID or Movie ID is missing');
+      return throwError(() => new Error('User ID or Movie ID is missing'));
+    }
+    
     return this.http.post<any>(
       `${apiUrl}users/${userId}/favorites`,
       { movieId },
@@ -132,7 +132,7 @@ export class FetchApiDataService {
     );
   }
 
-  // Method to remove a movie from favourite movies
+  // Method to remove a movie from favourite movies for a user
   public removeFromFavourites(userId: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.delete<any>(
@@ -143,18 +143,32 @@ export class FetchApiDataService {
         }),
       }
     ).pipe(
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
 
-  // Private method to handle errors from API requests
+  // Method to get favorite movies 
+  public getFavoriteMovies(userId: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http.get<any>(`${apiUrl}users/${userId}/favorites`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      }),
+    }).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error('An error occurred:', error.error.message);
     } else {
+      // Log error details more clearly
       console.error(
         `Error Status code ${error.status}, ` +
-        `Error body is: ${error.error}`
+        `Error body is: ${JSON.stringify(error.error)}`
       );
     }
     return throwError(() => new Error('Something went wrong; please try again later.'));
