@@ -23,7 +23,7 @@ export class NavbarComponent {
     // Remove token or user data from localStorage 
     localStorage.removeItem('token');  
     // Redirect to the welcome page
-    this.router.navigate(['/movies']);
+    this.router.navigate(['/welcome']);
     console.log('User logged out and redirected to welcome page');
   }
 }

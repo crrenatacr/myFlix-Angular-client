@@ -16,8 +16,6 @@ MyFlixAngularClient is a single-page, responsive movie app built with Angular. T
   - [End-to-End Tests](#end-to-end-tests)
 - [Cypress](#cypress)
 - [Kanban Board](#kanban-board)
-- [Documentation and Comments](#documentation-and-comments)
-- [Technical Interview Questions](#technical-interview-questions)
 - [Contributing](#contributing)
 - [License](#license)
 
