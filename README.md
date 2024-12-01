@@ -1,27 +1,100 @@
 # MyFlixAngularClient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+MyFlixAngularClient is a single-page, responsive movie app built with Angular. The client-side application consumes a REST API backend, allowing users to explore information about various movies, directors, and genres, as well as manage their user profiles.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Project Overview](#project-overview)
+- [Key Features](#key-features)
+- [Technical Requirements](#technical-requirements)
+- [Setup and Installation](#setup-and-installation)
+- [Development Server](#development-server)
+- [Code Scaffolding](#code-scaffolding)
+- [Build](#build)
+- [Running Tests](#running-tests)
+  - [Unit Tests](#unit-tests)
+  - [End-to-End Tests](#end-to-end-tests)
+- [Cypress](#cypress)
+- [Kanban Board](#kanban-board)
+- [Documentation and Comments](#documentation-and-comments)
+- [Technical Interview Questions](#technical-interview-questions)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Project Overview
 
-## Build
+The MyFlixAngularClient project is the client-side implementation of the Movieverse movie app. It provides an interface for users to interact with the existing backend server, allowing them to access movie-related information, register, log in, and manage their profiles.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+This project showcases Angular skills, the use of Angular Material for responsive design, and comprehensive documentation to ensure a smooth handoff to other developers.
 
-## Running unit tests
+## Key Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Welcome View**: Users can register or log in.
+- **Movie List View**: Displays all available movies.
+- **Single Movie View**: Displays additional details about a selected movie, with options to view more details about the director and genre.
+- **User Profile Management**: Users can create and update their profiles.
+- **Responsive Design**: Built with Angular Material for a seamless experience across devices.
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Technical Requirements
 
-## Further help
+- Angular version 9 or later
+- Latest version of Node.js and npm
+- Angular Material for UI design
+- TypeScript for static typing
+- Typedoc and JSDoc for code documentation
+- Hosted on GitHub Pages
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## Setup and Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/crrenatacr/myFlix-Angular-client
+
+2. **Navigate to the project directory**:
+
+cd my-flix-angular-client
+
+**Install dependencies**:
+
+npm install
+
+**Development Server**
+
+Run the following command to start the development server:
+
+npm start/ ng serve
+
+Navigate to http://localhost:4200/ in your web browser. The application will automatically reload when you make changes to the source files.
+
+**Generate new components, directives, pipes, services, or other Angular constructs using**:
+
+ng generate component component-name
+
+**Cypress**
+
+The project will, in the future, Cypress for end-to-end testing. You can configure and customize tests within the cypress/ directory.
+
+**Kanban Board**
+
+Project management is facilitated through an online Kanban board using Trello, where tasks are tracked and assigned story points.
+
+**Contributing**
+
+Contributions to this project are welcome! Please follow the standard Git workflow:
+
+    Fork the repository.
+    Create a new branch.
+    Commit your changes.
+    Submit a pull request.
+
+**License**
+
+This project is licensed under the MIT License.
+
+  
