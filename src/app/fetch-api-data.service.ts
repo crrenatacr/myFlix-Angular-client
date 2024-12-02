@@ -103,21 +103,19 @@ export class FetchApiDataService {
       );
   }
 
-  // Method to add a movie to favourite movies for a user
   public addToFavourites(userId: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-    // Checking if the token exists
+  
     if (!token) {
       console.error('Token is missing');
       return throwError(() => new Error('Token is missing'));
     }
-    
-    // Verify if userId is correct
+  
     if (!userId || !movieId) {
       console.error('User ID or Movie ID is missing');
       return throwError(() => new Error('User ID or Movie ID is missing'));
     }
-    
+  
     return this.http.post<any>(
       `${apiUrl}users/${userId}/favorites`,
       { movieId },
@@ -125,9 +123,13 @@ export class FetchApiDataService {
         headers: new HttpHeaders({
           Authorization: `Bearer ${token}`,
         }),
+        observe: 'response' // Observe full HTTP response
       }
     ).pipe(
-      map(this.extractResponseData),
+      map((response) => {
+        console.log('Full HTTP Response:', response); // Log full HTTP response
+        return this.extractResponseData(response.body); // Use response.body
+      }),
       catchError(this.handleError)
     );
   }
@@ -162,15 +164,13 @@ export class FetchApiDataService {
   }
 
   private handleError(error: HttpErrorResponse): any {
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // Log error details more clearly
-      console.error(
-        `Error Status code ${error.status}, ` +
-        `Error body is: ${JSON.stringify(error.error)}`
-      );
-    }
+    console.error('Error Details:', {
+      status: error.status,
+      statusText: error.statusText,
+      url: error.url,
+      error: JSON.stringify(error.error)
+    });
+  
     return throwError(() => new Error('Something went wrong; please try again later.'));
   }
 
