@@ -1,12 +1,9 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+// Include common styles for Angular Material.
+// Ensure this mixin is included only once in your project.
 @include mat.core();
 
 // Define the theme object.
@@ -21,20 +18,30 @@ $myFlix-Angular-client-theme: mat.define-theme((
   )
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+// Include theme styles for all Angular Material components used in the app.
 :root {
   @include mat.all-component-themes($myFlix-Angular-client-theme);
 }
 
-// Comment out the line below if you want to use the pre-defined typography utility classes.
-// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// Uncomment the line below if you want to use the predefined typography utility classes.
 // @include mat.typography-hierarchy($myFlix-Angular-client-theme);
 
-// Comment out the line below if you want to use the deprecated `color` inputs.
+// Uncomment the line below for backward compatibility with deprecated color inputs.
 // @include mat.color-variants-backwards-compatibility($myFlix-Angular-client-theme);
-/* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Set height for html and body to ensure the background image covers the entire viewport.
+html, body {
+  height: 100%; 
+  margin: 0; 
+}
+
+// Apply global styles for the body, including the background image.
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url('assets/cinemabackground.jpg'); // Background image path
+  background-size: cover; // Ensure the image covers the entire screen
+  background-repeat: no-repeat; // Prevent image repetition
+  background-attachment: fixed; // Keep the background image fixed while scrolling
+  background-color: #000; // Fallback color in case the image fails to load
+  z-index: -1; // Ensure the background stays behind all other elements
+}
