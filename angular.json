@@ -29,7 +29,7 @@
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js",
-              "src/polyfills.ts"
+              "zone.js/testing"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -88,7 +88,7 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "src/polyfills.ts"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
@@ -148,6 +148,9 @@
               "devServerTarget": "myFlix-Angular-client:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
