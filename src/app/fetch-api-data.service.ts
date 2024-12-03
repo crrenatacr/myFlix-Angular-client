@@ -123,6 +123,7 @@ export class FetchApiDataService {
         headers: new HttpHeaders({
           Authorization: `Bearer ${token}`,
         }),
+        responseType: 'text' as any,
         observe: 'response' // Observe full HTTP response
       }
     ).pipe(
@@ -143,6 +144,7 @@ export class FetchApiDataService {
         headers: new HttpHeaders({
           Authorization: `Bearer ${token}`,
         }),
+        responseType: 'text' as any,
       }
     ).pipe(
       map(this.extractResponseData),
