@@ -99,6 +99,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  isFavoriteMovie(movieId: string): boolean {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.FavoriteMovies.indexOf(movieId) >= 0;
+  }
+
+  
   toggleFavourite(movie: any): void {
     const userId = localStorage.getItem('userId');
     
@@ -115,10 +121,14 @@ export class MovieCardComponent implements OnInit {
     }
 
     // Check if the movie is already a favorite and handle the toggling accordingly
-    if (movie.isFavourite) {
+    if (this.isFavoriteMovie(movie._id)) {
+
       this.fetchApiData.removeFromFavourites(userId!, movie._id).subscribe({
+       
         next: () => {
-          movie.isFavourite = false; // Remove from favourites
+          const user = JSON.parse(localStorage.getItem('user') || '{}');
+          user.FavoriteMovies = user.FavoriteMovies.filter((id: string) => id !== movie._id);
+          localStorage.setItem('user', JSON.stringify(user));
         },
         error: (err) => {
           console.error('Error removing from favourites:', err);
@@ -128,8 +138,9 @@ export class MovieCardComponent implements OnInit {
       // Add movie to favorites
       this.fetchApiData.addToFavourites(userId!, movie._id).subscribe({
         next: (response) => {
-          console.log('Successfully added to favourites:', response); // Log to verify API response
-          movie.isFavourite = true; // Mark the movie as favourite
+          const user = JSON.parse(localStorage.getItem('user') || '{}');
+          user.FavoriteMovies.push(movie._id);
+          localStorage.setItem('user', JSON.stringify(user));
         },
         error: (err) => {
           console.error('Error adding to favourites:', err);

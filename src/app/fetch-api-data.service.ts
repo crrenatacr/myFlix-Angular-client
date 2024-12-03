@@ -102,10 +102,11 @@ export class FetchApiDataService {
           map(this.extractResponseData), catchError(this.handleError)
       );
   }
-
+// Method to add a movie to favorite/track error
   public addToFavourites(userId: string, movieId: string): Observable<any> {
     const token = localStorage.getItem('token');
-  
+    console.log('User ID:', userId);
+    console.log('Token:', token);
     if (!token) {
       console.error('Token is missing');
       return throwError(() => new Error('Token is missing'));
@@ -123,6 +124,7 @@ export class FetchApiDataService {
         headers: new HttpHeaders({
           Authorization: `Bearer ${token}`,
         }),
+        responseType: 'text' as any,
         observe: 'response' // Observe full HTTP response
       }
     ).pipe(
@@ -143,6 +145,7 @@ export class FetchApiDataService {
         headers: new HttpHeaders({
           Authorization: `Bearer ${token}`,
         }),
+        responseType: 'text' as any,
       }
     ).pipe(
       map(this.extractResponseData),
