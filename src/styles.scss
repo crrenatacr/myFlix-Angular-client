@@ -45,3 +45,75 @@ body {
   background-color: #000; // Fallback color in case the image fails to load
   z-index: -1; // Ensure the background stays behind all other elements
 }
+
+// Global container for app content
+.container {
+  width: 80%; /* Default width for larger screens */
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.8); // Semi-transparent background for better text readability
+  border-radius: 8px;
+}
+
+// Typography adjustments
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+}
+
+p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+// Media Queries for Responsiveness
+
+/* Large tablets and desktops (default) */
+@media (min-width: 1024px) {
+  .container {
+    width: 70%;
+  }
+}
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    width: 85%;
+  }
+  body {
+    background-attachment: scroll; // Allow scrolling for better performance on mobile
+  }
+}
+
+/* Small tablets and large smartphones (480px - 768px) */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+  body {
+    font-size: 14px; 
+  }
+  h1 {
+    font-size: 24px; // Adjust header sizes
+  }
+  h2 {
+    font-size: 20px;
+  }
+}
+
+/* Smartphones (320px - 480px) */
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+  body {
+    font-size: 12px; 
+  }
+  h1 {
+    font-size: 20px;
+  }
+  h2 {
+    font-size: 18px;
+  }
+}
