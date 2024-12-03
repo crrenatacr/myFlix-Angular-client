@@ -103,6 +103,12 @@ export class MovieCardComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.FavoriteMovies.indexOf(movieId) >= 0;
   }
+  
+
+  isFavoriteMovie(movieId: string): boolean {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.FavoriteMovies.indexOf(movieId) >= 0;
+  }
 
   
   toggleFavourite(movie: any): void {
@@ -121,8 +127,7 @@ export class MovieCardComponent implements OnInit {
     }
 
     // Check if the movie is already a favorite and handle the toggling accordingly
-    if (this.isFavoriteMovie(movie._id)) {
-
+    if (movie.isFavourite) {
       this.fetchApiData.removeFromFavourites(userId!, movie._id).subscribe({
        
         next: () => {
