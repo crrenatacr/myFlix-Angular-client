@@ -1,9 +1,33 @@
 :host {
-    display: block;
-    height: 100%;
-    background-image: url("../assets/cinemabackground.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: #000;
+  display: block;
+  height: 100%;
+  background-image: url("../assets/cinemabackground.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-color: #000;
+
+  // Responsividade para diferentes dispositivos
+  @media (max-width: 1024px) {
+    background-size: contain; // Ajusta a imagem para caber no viewport sem cortes
+    background-attachment: scroll; // Melhora a performance em dispositivos móveis
   }
+
+  @media (max-width: 768px) {
+    background-size: cover;
+    background-attachment: scroll;
+    background-position: top center; // Reposiciona a imagem para exibição mais clara em telas menores
+  }
+
+  @media (max-width: 480px) {
+    background-size: contain;
+    background-position: top center;
+    background-attachment: scroll;
+  }
+
+  @media (max-height: 600px) {
+    background-size: cover; // Para telas com pouca altura, mantém o fundo ajustado
+    background-position: center center;
+  }
+}
