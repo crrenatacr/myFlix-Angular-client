@@ -1,76 +1,102 @@
-/* Container to center the cards */
-.user-profile-container {
-  display: flex;
-  justify-content: center; /* Center the cards horizontally */
-  align-items: flex-start; /* Align the cards at the top */
-  gap: 40px; /* Space between the cards */
-  padding: 20px;
-}
-
-/* Style for the cards to add internal spacing */
-mat-card {
-  padding: 20px; /* Internal padding to keep elements away from the borders */
-  width: 100%;
-  max-width: 500px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a smooth look */
-  border-radius: 10px; /* Rounded corners */
-}
-
-/* Specific style for individual cards */
-.user-information {
-  width: 60%;
-}
-
-.favorite-movies {
-  width: 35%;
-  max-width: 350px;
-}
-
-/* Keeps the inputs stacked vertically */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* Aligns buttons side by side with adequate spacing */
-.button-group {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-button {
-  width: 48%; /* Adjusted width to keep the buttons side by side */
-}
-
-/* Style for the favorite movies list */
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 10px; /* Space between the title and the list */
-}
-
-li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-/* Additional spacing adjustments */
-mat-card-title {
-  margin-bottom: 20px; /* Space between the title and the content */
-  font-weight: bold;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-mat-form-field {
-  width: 100%;
-}
-
-mat-divider {
-  margin: 10px 0; /* Space above and below the divider */
-}
+/* Container for the profile and favorite movies cards. 
+   Adjusts layout for different screen sizes. */
+   .user-profile-container {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically on smaller screens */
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+  
+    /* Switch to horizontal layout for larger screens */
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+  
+  /* General card styling for consistent appearance */
+  mat-card {
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  /* Styling for the User Information card */
+  .user-information {
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  /* Styling for the Favorite Movies card */
+  .favorite-movies {
+    width: 100%;
+    max-width: 500px;
+  
+    /* Adjust width for larger screens */
+    @media (min-width: 768px) {
+      width: 35%;
+      max-width: 350px;
+    }
+  }
+  
+  /* Form layout to stack input fields vertically */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Button group with responsive layout */
+  .button-group {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  button {
+    width: 100%; /* Full width on small screens */
+    max-width: 48%; /* Keep buttons side by side on larger screens */
+  }
+  
+  /* Styling for the favorite movies list */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    flex-wrap: wrap; /* Allow text and button to wrap on smaller screens */
+    gap: 10px;
+  }
+  
+  li button {
+    width: auto;
+    padding: 5px 10px;
+  }
+  
+  /* Title styling for better visual hierarchy */
+  mat-card-title {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-divider {
+    margin: 10px 0;
+  }
+  
