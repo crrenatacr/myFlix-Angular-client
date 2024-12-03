@@ -69,19 +69,30 @@
     margin-top: 10px;
   }
   
+  /* Ensures list items and buttons remain inside the container */
   li {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #ccc;
-    flex-wrap: wrap; /* Allow text and button to wrap on smaller screens */
+    flex-wrap: nowrap; /* Prevent text and button from wrapping */
     gap: 10px;
   }
   
+  /* Button inside the list item, stays aligned with the text */
   li button {
-    width: auto;
+    white-space: nowrap; /* Prevents button text from breaking */
+    flex-shrink: 0; /* Keeps button size fixed */
     padding: 5px 10px;
+  }
+  
+  /* Ensures text truncates if it's too long, keeping the button in view */
+  li span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Keeps text in a single line */
+    max-width: calc(100% - 90px); /* Adjusts width to leave space for the button */
   }
   
   /* Title styling for better visual hierarchy */
