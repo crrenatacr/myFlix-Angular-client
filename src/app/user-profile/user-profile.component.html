@@ -1,6 +1,8 @@
-<!DOCTYPE html>
 <app-navbar></app-navbar>
-<mat-card>
+
+<div class="user-profile-container">
+  <!-- User Information Card -->
+  <mat-card class="user-information">
     <mat-card-title>User Information</mat-card-title>
     <form (ngSubmit)="updateProfile()">
       <!-- Username Input Field -->
@@ -8,37 +10,36 @@
         <mat-label>Username</mat-label>
         <input matInput [(ngModel)]="user.Username" name="username" required />
       </mat-form-field>
-  
+
       <!-- Email Input Field -->
       <mat-form-field class="full-width">
         <mat-label>Email</mat-label>
         <input matInput [(ngModel)]="user.Email" name="email" required />
       </mat-form-field>
-  
+
       <!-- Birthday Input Field -->
       <mat-form-field class="full-width">
         <mat-label>Birthday</mat-label>
         <input matInput type="date" [(ngModel)]="user.Birthday" name="birthday" required />
       </mat-form-field>
-  
-      <!-- Update Profile Button -->
-      <button mat-raised-button color="primary" type="submit">Update Profile</button>
-  
-      <!-- Delete Profile Button -->
-      <button mat-raised-button color="warn" type="button" (click)="deregister()">Delete Profile</button>
+
+      <!-- Update and Delete Profile Buttons -->
+      <div class="button-group">
+        <button mat-raised-button color="primary" type="submit">Update Profile</button>
+        <button mat-raised-button color="warn" type="button" (click)="deregister()">Delete Profile</button>
+      </div>
     </form>
   </mat-card>
-  
-  <mat-card>
+
+  <!-- Favorite Movies Card -->
+  <mat-card class="favorite-movies">
     <mat-card-title>Favorite Movies</mat-card-title>
-    <mat-divider></mat-divider> <!-- Divider to separate the sections -->
+    <mat-divider></mat-divider>
     <ul>
-      <!-- Loop through the favorite movies -->
       <li *ngFor="let movie of favoriteMovies">
         {{ movie.Title }}
-        <!-- Remove Favorite Button -->
         <button mat-button color="warn" (click)="removeFavorite(movie._id)">Remove</button>
       </li>
     </ul>
   </mat-card>
-  
+</div>

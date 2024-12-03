@@ -1,57 +1,76 @@
-.user-profile {
-    padding: 20px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-  }
-  
-  mat-card {
-    width: 100%;
-    max-width: 500px; 
-    margin-bottom: 20px; 
-    border-radius: 10px;
-    padding: 20px; 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
-  }
-  
-  mat-card-title {
-    text-align: center; 
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; 
-  }
-  
-  .full-width {
-    width: 100%;
-    max-width: 100%;
-  }
-  
-  button[type="submit"],
-  button[type="button"] {
-    width: 100%; 
-  }
-  
-  button {
-    margin-top: 10px; 
-  }
-  
-  ul {
-    list-style-type: none; 
-    padding: 0; 
-  }
-  
-  li {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    margin-bottom: 10px; 
-    padding: 10px; 
-    border-bottom: 1px solid #ccc; 
-  }
-  
+/* Container to center the cards */
+.user-profile-container {
+  display: flex;
+  justify-content: center; /* Center the cards horizontally */
+  align-items: flex-start; /* Align the cards at the top */
+  gap: 40px; /* Space between the cards */
+  padding: 20px;
+}
+
+/* Style for the cards to add internal spacing */
+mat-card {
+  padding: 20px; /* Internal padding to keep elements away from the borders */
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a smooth look */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Specific style for individual cards */
+.user-information {
+  width: 60%;
+}
+
+.favorite-movies {
+  width: 35%;
+  max-width: 350px;
+}
+
+/* Keeps the inputs stacked vertically */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Aligns buttons side by side with adequate spacing */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+button {
+  width: 48%; /* Adjusted width to keep the buttons side by side */
+}
+
+/* Style for the favorite movies list */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px; /* Space between the title and the list */
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Additional spacing adjustments */
+mat-card-title {
+  margin-bottom: 20px; /* Space between the title and the content */
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-divider {
+  margin: 10px 0; /* Space above and below the divider */
+}
