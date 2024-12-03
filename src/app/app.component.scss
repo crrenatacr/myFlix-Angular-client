@@ -17,7 +17,7 @@
   @media (max-width: 768px) {
     background-size: cover;
     background-attachment: scroll;
-    background-position: top center; // Reposiciona a imagem para exibição mais clara em telas menores
+    background-position: top center; 
   }
 
   @media (max-width: 480px) {
@@ -27,7 +27,7 @@
   }
 
   @media (max-height: 600px) {
-    background-size: cover; // Para telas com pouca altura, mantém o fundo ajustado
+    background-size: cover; 
     background-position: center center;
   }
 }
