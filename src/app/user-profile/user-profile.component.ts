@@ -47,18 +47,12 @@ export class UserProfileComponent implements OnInit {
 
   removeFavorite(movieId: string): void {
     this.http.delete(`https://movieverse-902fc605dee3.herokuapp.com/users/${this.user._id}/favorites/${movieId}`, {
-      headers: { Authorization: `Bearer ${this.token}` },
-      responseType: 'text'
-    }).subscribe({
-      next: () => {
-        this.favoriteMovies = this.favoriteMovies.filter(movie => movie._id !== movieId);
-        const user = JSON.parse(localStorage.getItem('user') || '{}');
-        user.FavoriteMovies = user.FavoriteMovies.filter((id: string) => id !== movieId);
-        localStorage.setItem('user', JSON.stringify(user));
-        this.snackBar.open('Movie removed from favorites', 'Close', {
-          duration: 3000,
-        });
-      }
+      headers: { Authorization: `Bearer ${this.token}` }
+    }).subscribe(() => {
+      this.favoriteMovies = this.favoriteMovies.filter(movie => movie._id !== movieId);
+      this.snackBar.open('Movie removed from favorites', 'Close', {
+        duration: 3000,
+      });
     });
   }
 

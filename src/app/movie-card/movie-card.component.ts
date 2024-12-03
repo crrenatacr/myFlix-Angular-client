@@ -80,7 +80,7 @@ export class MovieCardComponent implements OnInit {
 
   checkIfFavourite(movieId: string): void {
     const userId = localStorage.getItem('userId');
-    
+
     if (!userId) {
       console.error('User ID is missing');
       return; // Stop execution if userId is missing
@@ -99,21 +99,15 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  isFavoriteMovie(movieId: string): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.FavoriteMovies.indexOf(movieId) >= 0;
-  }
-
-  
   toggleFavourite(movie: any): void {
     const userId = localStorage.getItem('userId');
-    
+
     // Check if userId is present
     if (!userId) {
       console.error('User ID is missing');
       return; // Stop execution if userId is missing
     }
-    
+
     // Check if movie._id is present
     if (!movie._id) {
       console.error('Movie ID is missing');
@@ -123,11 +117,8 @@ export class MovieCardComponent implements OnInit {
     // Check if the movie is already a favorite and handle the toggling accordingly
     if (movie.isFavourite) {
       this.fetchApiData.removeFromFavourites(userId!, movie._id).subscribe({
-       
         next: () => {
-          const user = JSON.parse(localStorage.getItem('user') || '{}');
-          user.FavoriteMovies = user.FavoriteMovies.filter((id: string) => id !== movie._id);
-          localStorage.setItem('user', JSON.stringify(user));
+          movie.isFavourite = false; // Remove from favourites
         },
         error: (err) => {
           console.error('Error removing from favourites:', err);
@@ -137,9 +128,8 @@ export class MovieCardComponent implements OnInit {
       // Add movie to favorites
       this.fetchApiData.addToFavourites(userId!, movie._id).subscribe({
         next: (response) => {
-          const user = JSON.parse(localStorage.getItem('user') || '{}');
-          user.FavoriteMovies.push(movie._id);
-          localStorage.setItem('user', JSON.stringify(user));
+          console.log('Successfully added to favourites:', response); // Log to verify API response
+          movie.isFavourite = true; // Mark the movie as favourite
         },
         error: (err) => {
           console.error('Error adding to favourites:', err);
