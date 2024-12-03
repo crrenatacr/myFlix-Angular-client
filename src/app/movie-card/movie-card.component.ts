@@ -103,12 +103,6 @@ export class MovieCardComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.FavoriteMovies.indexOf(movieId) >= 0;
   }
-  
-
-  isFavoriteMovie(movieId: string): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.FavoriteMovies.indexOf(movieId) >= 0;
-  }
 
   
   toggleFavourite(movie: any): void {
